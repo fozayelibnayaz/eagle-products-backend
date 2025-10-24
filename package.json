@@ -2,11 +2,11 @@
   "name": "eagle-products-backend",
   "version": "1.0.0",
   "description": "Backend service for eagle-products, built with Express and TypeScript.",
-  "main": "dist/api/index.js",
+  "main": "dist/routes/index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/api/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/routes/index.ts",
     "build": "tsc",
-    "start": "node dist/api/index.js"
+    "start": "node dist/routes/index.js"
   },
   "keywords": [
     "express",
