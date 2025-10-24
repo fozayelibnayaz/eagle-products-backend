@@ -1,19 +1,19 @@
 {
   "name": "eagle-products-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend service for eagle-products, built with Express and TypeScript.",
   "main": "dist/index.js",
-  "type": "commonjs",
   "scripts": {
-    "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "postinstall": "npm run build"
+    "build": "tsc",
+    "postinstall": "npm run build",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
   },
-  "engines": {
-    "node": ">=18 <21"
-  },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "typescript",
+    "firebase"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
