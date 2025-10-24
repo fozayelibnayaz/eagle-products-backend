@@ -6,7 +6,7 @@ import { Request, Response } from "express";
 const router = Router();
 
 const DEMO_USER = {
-  email: "demo@eagle.com",
+  username: "demo@eagle.com",
   password: "DemoPassword123"
 };
 
