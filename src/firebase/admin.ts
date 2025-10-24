@@ -1,23 +1,18 @@
 import admin from "firebase-admin";
-import path from "path";
 
-// Check if service account is provided as environment variable (for Railway/production)
-const serviceAccountEnv = process.env.FIREBASE_SERVICE_ACCOUNT;
+const serviceAccountJson = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
 
-if (!admin.apps.length) {
-  if (serviceAccountEnv) {
-    // Production: use environment variable (Railway)
-    const serviceAccount = JSON.parse(serviceAccountEnv);
+if (!admin.apps.length && serviceAccountJson) {
+  try {
+    const credentials = JSON.parse(serviceAccountJson);
     admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount)
+      credential: admin.credential.cert(credentials as any)
     });
-  } else {
-    // Local development: use JSON file
-    const serviceAccountPath = path.resolve(process.cwd(), "firebase-service-account.json");
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccountPath as any)
-    });
+  } catch (e) {
+    console.error("Firebase Init Error: Could not parse service account JSON.", e);
   }
+} else if (!serviceAccountJson) {
+    console.warn("FIREBASE_SERVICE_ACCOUNT_JSON is missing in environment.");
 }
 
 export const firestore = admin.firestore();
